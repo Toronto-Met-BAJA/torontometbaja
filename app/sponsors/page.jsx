@@ -1,185 +1,178 @@
 "use client";
 
-import { title } from "@/components/primitives";
-import { sponsors, sponsorshipTiers } from "@/config/data";
 import { Card, CardBody } from "@heroui/card";
 import { Image } from "@heroui/image";
 import { Chip } from "@heroui/chip";
 import { Button } from "@heroui/button";
 import { Link } from "@heroui/link";
 
+import { title } from "@/components/primitives";
+import {
+  sponsors,
+  sponsorshipPackage,
+  sponsorshipPerks,
+  sponsorshipTiers,
+} from "@/config/data";
+
 export default function SponsorsPage() {
-  // Group sponsors by tier for better display
-  const tiers = ["Platinum", "Gold", "Silver", "Bronze"];
-
-  const getTierColor = (tier) => {
-    switch (tier) {
-      case "Platinum": return "primary";
-      case "Gold": return "warning";
-      case "Silver": return "default";
-      default: return "secondary";
-    }
-  };
-
-  const getTierSize = (tier) => {
-    switch (tier) {
-      case "Platinum": return "max-w-md";
-      case "Gold": return "max-w-[320px]";
-      case "Silver": return "max-w-[220px]";
-      default: return "max-w-[140px]";
-    }
-  };
-
-  const getTierBackdrop = (tier) => {
-    switch (tier) {
-      case "Platinum": return "bg-gradient-to-br from-slate-100 to-blue-100 dark:from-slate-800 dark:to-blue-900";
-      case "Gold": return "bg-gradient-to-br from-yellow-100 to-yellow-200 dark:from-yellow-400 dark:to-yellow-600";
-      case "Silver": return "bg-gradient-to-br from-gray-100 to-slate-200 dark:from-gray-700 dark:to-slate-600";
-      default: return "bg-gradient-to-br from-orange-50 to-amber-100 dark:from-orange-900 dark:to-amber-800";
-    }
-  };
-
-  const getTierHeight = (tier) => {
-    switch (tier) {
-      case "Platinum": return "h-[180px]";
-      case "Gold": return "h-[110px]";
-      case "Silver": return "h-[80px]";
-      default: return "h-[60px]";
-    }
-  };
-
   return (
-    <div className="container mx-auto max-w-[80vw] flex flex-col gap-8 py-8 md:py-10">
+    <div className="container mx-auto w-full max-w-7xl flex flex-col gap-12 px-4 py-8 sm:px-6 md:py-10 lg:px-8">
       <div className="text-center">
-        <h1 className={title()}>Our Sponsors</h1>
-        <p className="mt-4 text-lg text-default-500">
-          Thank you to our partners who make this possible.
+        <p className="mb-4 text-sm font-bold uppercase tracking-widest text-[#EE3124]">
+          {sponsorshipPackage.season} Sponsorships
+        </p>
+        <h1 className={title()}>Partner With TMBR</h1>
+        <p className="mt-4 text-lg text-default-600 max-w-3xl mx-auto">
+          Invest in the next generation of engineers. Your support helps Toronto
+          Met Baja Racing design, build, and race an all-new off-road vehicle and
+          gives students hands-on engineering experience.
         </p>
       </div>
 
-      {/* Sponsorship Package Section */}
-      <div className="flex flex-col gap-12 mt-8 relative overflow-hidden">
-        {/* Racing decorative lines */}
-        <div className="absolute top-0 right-0 w-64 h-64 bg-[#EE3124]/5 -rotate-45 translate-x-32 -translate-y-32 pointer-events-none"></div>
-        <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#EE3124]/5 -rotate-45 -translate-x-32 translate-y-32 pointer-events-none"></div>
+      <section className="flex flex-col gap-8 relative overflow-hidden" aria-labelledby="sponsorship-tiers">
+        <div className="absolute top-0 right-0 w-64 h-64 bg-[#EE3124]/5 -rotate-45 translate-x-32 -translate-y-32 pointer-events-none" />
 
         <div className="text-center flex flex-col gap-4 relative z-10">
-          <h2 className="text-3xl font-bold italic tracking-tight">
+          <h2 id="sponsorship-tiers" className="text-3xl font-bold italic tracking-tight">
             SUPPORT THE <span className="text-[#EE3124]">FUTURE</span> OF ENGINEERING
           </h2>
           <p className="text-default-600 max-w-2xl mx-auto">
-            Empower student innovation and join a legacy of excellence. Your partnership directly fuels our 
-            vehicle development, advanced manufacturing, and international competition success.
+            Choose the level that fits you. We also welcome in-kind support:
+            parts, software, and manufacturing services are credited at fair
+            market value toward the equivalent tier.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 relative z-10 text-left">
           {sponsorshipTiers.map((tier) => (
             <Card key={tier.name} className="flex flex-col border-none bg-default-50/50 dark:bg-default-100/50 backdrop-blur-sm shadow-sm group hover:scale-[1.02] transition-transform duration-300">
-              {/* Slanted accent corner */}
-              <div className="absolute top-0 right-0 w-8 h-8 bg-[#EE3124] clip-path-slant pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity"></div>
-              
+              <div className="absolute top-0 right-0 w-8 h-8 bg-[#EE3124] clip-path-slant pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity" />
+
               <CardBody className="p-6 flex flex-col gap-4 h-full">
                 <div className="flex flex-col gap-1">
-                  <Chip 
-                    color={getTierColor(tier.name)}
-                    classNames={{
-                      base: "border-none text-white font-bold px-3 py-1 uppercase text-[10px]",
-                    }}
-                    variant="solid" 
-                    size="sm" 
-                    className="w-fit"
-                  >
+                  <Chip color={tier.color} variant="flat" size="sm" className="w-fit font-bold uppercase">
                     {tier.name}
                   </Chip>
-                  <div className="flex items-baseline gap-1 mt-2">
-                    <span className="text-3xl font-black italic">{tier.price}</span>
-                  </div>
+                  <span className="text-3xl font-black italic mt-2">{tier.price}</span>
                 </div>
-                
-                <p className="text-small text-default-500 min-h-[40px] font-medium">
+
+                <p className="text-small text-default-600 min-h-[40px] font-medium">
                   {tier.description}
                 </p>
 
-                <div className="flex-1 mt-4">
-                  <ul className="flex flex-col gap-3">
-                    {tier.benefits.map((benefit, i) => (
-                      <li key={i} className="flex items-start gap-2 text-tiny text-default-700 dark:text-default-300">
-                        <span className="mt-0.5 text-[#EE3124]">
-                          <svg width="14" height="14" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M10 3L4.5 8.5L2 6" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-                          </svg>
-                        </span>
-                        <span className="font-medium">{benefit}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                <ul className="flex flex-col gap-3 mt-2">
+                  {tier.benefits.map((benefit) => (
+                    <li key={benefit} className="flex items-start gap-2 text-sm text-default-700">
+                      <svg aria-hidden="true" className="mt-1 shrink-0 text-[#EE3124]" width="14" height="14" viewBox="0 0 12 12" fill="none">
+                        <path d="M10 3L4.5 8.5L2 6" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                      <span>{benefit}</span>
+                    </li>
+                  ))}
+                </ul>
               </CardBody>
             </Card>
           ))}
         </div>
 
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center py-6 relative z-10">
-          <Button 
+        <div className="flex flex-col sm:flex-row flex-wrap gap-4 justify-center items-center py-4 relative z-10">
+          <Button
             as={Link}
-            style={{ backgroundColor: '#EE3124' }}
-            size="lg" 
-            className="w-full sm:w-auto font-black italic tracking-widest text-white uppercase px-12 group"
-            href={"https://new.express.adobe.com/id/urn:aaid:sc:VA6C2:1629f2c6-2603-5879-a556-42d02b16e3d5?accept=true%3Fpreload%3Dsharesheet"}
+            style={{ backgroundColor: "#EE3124" }}
+            size="lg"
+            className="w-full sm:w-auto font-bold text-white"
+            href={`mailto:${sponsorshipPackage.email}?subject=${encodeURIComponent(`${sponsorshipPackage.season} TMBR Sponsorship`)}`}
+          >
+            Become a Sponsor
+          </Button>
+          <Button
+            as={Link}
+            variant="bordered"
+            size="lg"
+            className="w-full sm:w-auto font-bold"
+            href={sponsorshipPackage.url}
             target="_blank"
             rel="noopener noreferrer"
           >
-            Become a Sponsor
-            <span className="ml-2 group-hover:translate-x-1 transition-transform">→</span>
+            View Sponsorship Package (PDF)
           </Button>
         </div>
-      </div>
+      </section>
 
-      <div className="h-px bg-gradient-to-r from-transparent via-default-200 to-transparent mt-12 mb-8"></div>
-
-      <div className="text-center">
-        <h2 className="text-3xl font-black italic text-default-800 dark:text-default-200">OUR CURRENT PARTNERS</h2>
-      </div>
-      <div className="flex flex-col gap-12 mt-8">
-        {tiers.map((tier) => {
-          const tierSponsors = sponsors.filter(s => s.tier === tier);
-          if (tierSponsors.length === 0) return null;
-
-          return (
-            <div key={tier} className="flex flex-col gap-6">
-              <div className="flex items-center gap-4">
-                <h2 className="text-2xl font-bold">{tier} Sponsors</h2>
-                <Chip color={getTierColor(tier)} variant="flat">{tierSponsors.length}</Chip>
-                <div className="h-px bg-default-200 flex-1"></div>
-              </div>
-
-              <div className="flex flex-wrap justify-center gap-6">
-                {tierSponsors.map((sponsor, index) => (
-                  <Card
-                    shadow="sm"
-                    key={index}
-                    isPressable
-                    onPress={() => window.open(sponsor.website, '_blank')}
-                    className={`${getTierSize(tier)} ${getTierBackdrop(tier)}`}
-                  >
-                    <div className="pt-2 px-4 flex-col items-start pb-0">
-                      <b className="text-small">{sponsor.name}</b>
-                    </div>
-                    <CardBody className="overflow-visible p-6 items-center justify-center">
-                      <Image
-                        radius="lg"
-                        alt={sponsor.name}
-                        className={`${getTierHeight(tier)} w-auto object-contain`}
-                        src={sponsor.logoUrl}
-                      />
-                    </CardBody>
-                  </Card>
-                ))}
-              </div>
+      <section className="flex flex-col gap-6" aria-labelledby="sponsorship-perks">
+        <div className="text-center">
+          <h2 id="sponsorship-perks" className="text-3xl font-black italic">PERKS BREAKDOWN</h2>
+          <p className="mt-3 text-default-600">Benefits are included according to the sponsorship tier above.</p>
+        </div>
+        <dl className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6 text-left">
+          {sponsorshipPerks.map((perk) => (
+            <div key={perk.name} className="border-l-2 border-[#EE3124] pl-4">
+              <dt className="font-bold text-default-800">{perk.name}</dt>
+              <dd className="mt-2 text-default-600">{perk.description}</dd>
             </div>
-          );
-        })}
+          ))}
+        </dl>
+      </section>
+
+      <section className="flex flex-col gap-6" aria-labelledby="sponsorship-impact">
+        <h2 id="sponsorship-impact" className="text-center text-3xl font-black italic">WHERE YOUR SUPPORT GOES</h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
+          {[
+            {
+              name: "Build the new vehicle",
+              description: "Fund the materials, precision machining, and manufacturing needed to build our new car from the ground up.",
+            },
+            {
+              name: "Get us to competitions",
+              description: "Help cover travel, registration, and logistics so our team and car can compete and represent our sponsors.",
+            },
+            {
+              name: "Open the shop to everyone",
+              description: "Support hands-on workshops with groups such as Women in Engineering, giving more students the chance to learn real shop skills.",
+            },
+          ].map((impact) => (
+            <Card key={impact.name} className="border-none bg-default-50 dark:bg-default-100/50 shadow-sm">
+              <CardBody className="p-6 gap-3">
+                <h3 className="font-bold text-lg">{impact.name}</h3>
+                <p className="text-default-600">{impact.description}</p>
+              </CardBody>
+            </Card>
+          ))}
+        </div>
+      </section>
+
+      <section className="flex flex-col gap-8 border-t border-default-200 pt-12" aria-labelledby="current-partners">
+        <div className="text-center">
+          <h2 id="current-partners" className="text-3xl font-black italic text-default-800">OUR CURRENT PARTNERS</h2>
+          <p className="mt-3 text-default-600">Thank you to the partners investing in our team and the next generation of engineers.</p>
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+          {sponsors.map((sponsor) => (
+            <a
+              key={sponsor.name}
+              href={sponsor.website}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex flex-col items-center gap-4 rounded-2xl bg-default-50 dark:bg-default-100/50 p-6 transition-transform hover:scale-[1.02] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#EE3124]"
+            >
+              <div className="flex h-28 w-full items-center justify-center rounded-xl bg-white p-4">
+                <Image radius="none" alt={sponsor.name} className="max-h-20 w-auto object-contain" src={sponsor.logoUrl} />
+              </div>
+              <span className="font-bold text-default-800">{sponsor.name}</span>
+            </a>
+          ))}
+        </div>
+      </section>
+
+      <div className="text-center rounded-2xl bg-default-50 dark:bg-default-100/50 p-6 sm:p-8">
+        <h2 className="text-2xl font-bold">Let&apos;s find the right fit.</h2>
+        <p className="mt-3 text-default-600 max-w-2xl mx-auto">
+          Choose a tier, or tell us what you can offer in cash, parts, or services.
+          We would love to hear from you.
+        </p>
+        <Link className="mt-4 font-bold break-all" href={`mailto:${sponsorshipPackage.email}`}>
+          {sponsorshipPackage.email}
+        </Link>
       </div>
     </div>
   );

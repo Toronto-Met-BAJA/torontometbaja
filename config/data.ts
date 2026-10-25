@@ -12,17 +12,8 @@ import anthonyImg from "../resources/headshots/anthony-linkedin.jpeg";
 import jackImg from "../resources/headshots/blank_headshot.jpg";
 
 import solidworksImg from "../resources/sponsors/solidworks.webp";
-import briggsImg from "../resources/sponsors/briggs.webp";
-import tmuImg from "../resources/sponsors/TMU.webp";
-import cvtechImg from "../resources/sponsors/CVTech.webp";
-import wilwoodImg from "../resources/sponsors/wilwood.webp";
 import vr3Img from "../resources/sponsors/vr3.webp";
-import solidcamImg from "../resources/sponsors/solidcam.webp";
-import mondayImg from "../resources/sponsors/monday.webp";
-import slabImg from "../resources/sponsors/slab.webp";
-import muesImg from "../resources/sponsors/MUES.webp";
-import ctechImg from "../resources/sponsors/CTech.svg";
-import hondaImg from "../resources/sponsors/honda.svg";
+import polarisImg from "../resources/sponsors/polaris.webp";
 
 import lavalImg from "../resources/LavalBaja201942.jpg";
 import carImg from "../resources/car.png";
@@ -125,78 +116,28 @@ export const teamMembers = [
   },
 ];
 
+export const sponsorshipPackage = {
+  season: "2026/2027",
+  url: "/TMBR_Sponsorship_Package_2026-2027.pdf",
+  email: "bajasae@torontomu.ca",
+};
+
+// Current partners listed in the 2026/2027 sponsorship package.
 export const sponsors = [
   {
     name: "SolidWorks",
-    tier: "Platinum",
     logoUrl: solidworksImg.src,
     website: "https://www.solidworks.com/",
   },
   {
-    name: "Briggs & Stratton",
-    tier: "Platinum",
-    logoUrl: briggsImg.src,
-    website: "https://www.briggsandstratton.com/",
-  },
-  {
-    name: "TMU FEAS",
-    tier: "Platinum",
-    logoUrl: tmuImg.src,
-    website: "https://www.torontomu.ca/engineering-architectural-science/",
-  },
-  {
-    name: "Honda",
-    tier: "Platinum",
-    logoUrl: hondaImg.src,
-    website: "https://www.honda.ca/",
-  },
-  {
-    name: "C-Tech Manufacturing",
-    tier: "Platinum",
-    logoUrl: ctechImg.src,
-    website: "https://ctechmanufacturing.com/",
-  },
-  {
-    name: "CVTech-AAB",
-    tier: "Gold",
-    logoUrl: cvtechImg.src,
-    website: "https://umatek.com/fr",
-  },
-  {
-    name: "Wilwood Engineering",
-    tier: "Gold",
-    logoUrl: wilwoodImg.src,
-    website: "https://www.wilwood.com/",
-  },
-  {
     name: "VR3 Engineering",
-    tier: "Silver",
     logoUrl: vr3Img.src,
     website: "https://vr3.ca/",
   },
   {
-    name: "SolidCAM",
-    tier: "Silver",
-    logoUrl: solidcamImg.src,
-    website: "https://www.solidcam.com/",
-  },
-  {
-    name: "Monday.com",
-    tier: "Bronze",
-    logoUrl: mondayImg.src,
-    website: "https://monday.com/",
-  },
-  {
-    name: "Slab",
-    tier: "Bronze",
-    logoUrl: slabImg.src,
-    website: "https://slab.com/",
-  },
-  {
-    name: "MUES",
-    tier: "Bronze",
-    logoUrl: muesImg.src,
-    website: "https://www.mues.ca/",
+    name: "Polaris",
+    logoUrl: polarisImg.src,
+    website: "https://www.polaris.com/",
   },
 ];
 
@@ -327,48 +268,96 @@ export const sponsorshipTiers = [
     name: "Bronze",
     price: "$250",
     color: "secondary",
-    description: "Ideal for individual contributors and small businesses.",
+    description: "Logo visibility and annual sponsor recognition.",
     benefits: [
       "Small logo on the vehicle",
       "Small logo on team website",
       "Small logo on team apparel",
-      "Logo in annual sponsor post",
+      "Annual sponsor post on Instagram and LinkedIn",
     ]
   },
   {
     name: "Silver",
     price: "$500",
     color: "default",
-    description: "Perfect for growing companies looking for visibility.",
+    description: "Brand visibility at our events and outreach sessions.",
     benefits: [
       "Medium logo on the vehicle",
       "Medium logo on team website",
       "Medium logo on team apparel",
-      "Featured in group posts + tagged",
+      "Annual sponsor post on Instagram and LinkedIn",
+      "Swag distribution at team events",
     ]
   },
   {
     name: "Gold",
     price: "$1,000",
     color: "warning",
-    description: "Significant support for our engineering materials.",
+    description: "Brand exposure and access to engineering talent.",
     benefits: [
-      "Medium logo on the vehicle",
+      "Large logo on the vehicle",
       "Large logo on team website",
       "Large logo on team apparel",
-      "High-visibility posts + 1 dedicated post",
+      "Annual sponsor post on Instagram and LinkedIn",
+      "Swag distribution at team events",
+      "Dedicated social media posts and recurring features",
+      "Access to the team resume book",
+      "Private shop tour in Kerr Hall",
     ]
   },
   {
     name: "Platinum",
-    price: "$2,000+",
+    price: "$2,500",
     color: "primary",
-    description: "Official top-tier partnership with maximum reach.",
+    description: "Our most comprehensive partnership and recruitment access.",
     benefits: [
-      "Large logo on the vehicle",
-      "Top-of-website logo placement",
-      "Large logo on team apparel",
-      "Dedicated posts + recurring spotlight",
+      "Extra-large logo on the vehicle",
+      "Extra-large logo on team website",
+      "Extra-large logo on team apparel",
+      "Annual sponsor post on Instagram and LinkedIn",
+      "Swag distribution at team events",
+      "Dedicated social media posts and recurring features",
+      "Access to the team resume book",
+      "Private shop tour in Kerr Hall",
+      "Exclusive recruitment access",
     ]
   }
+];
+
+export const sponsorshipPerks = [
+  {
+    name: "Logo visibility",
+    description:
+      "Your logo on our website, 2026/2027 race vehicle, and official team apparel, sized by sponsorship level. Your brand travels with us to SAE Baja competitions across North America.",
+  },
+  {
+    name: "Annual sponsor post",
+    description:
+      "Recognition in our annual sponsor thank-you post on Instagram and LinkedIn.",
+  },
+  {
+    name: "Swag distribution",
+    description:
+      "Hand out your swag or branded materials at our team events and outreach sessions.",
+  },
+  {
+    name: "Dedicated social media posts",
+    description:
+      "Spotlight posts and recurring features to introduce your brand to our online community.",
+  },
+  {
+    name: "Team resume book",
+    description:
+      "Direct access to our team resume book to recruit TMU engineering talent.",
+  },
+  {
+    name: "Private shop tour",
+    description:
+      "Visit our Kerr Hall fabrication shop for a private tour and see the build firsthand.",
+  },
+  {
+    name: "Exclusive recruitment access",
+    description:
+      "Meet our members directly by hosting mock interviews or networking sessions.",
+  },
 ];

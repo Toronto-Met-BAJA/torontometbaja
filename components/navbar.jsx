@@ -15,6 +15,8 @@ import { Link } from "@heroui/link";
 import NextLink from "next/link";
 import Image from "next/image";
 
+import { sponsorshipPackage } from "@/config/data";
+
 import { ThemeSwitch } from "@/components/theme-switch";
 import {
   InstagramIcon,
@@ -158,7 +160,7 @@ export const Navbar = () => {
             as={Link}
             isExternal
             color="primary"
-            href={"https://drive.google.com/file/d/1ri9UPPRkDqpMNovB-rysg84dN_wZISye/view?usp=drive_link"}
+            href={sponsorshipPackage.url}
             startContent={<Image
               src={require("./TMUBaja-PixelArt.png")}
               alt="TMU Baja Pixel Art"

@@ -10,8 +10,6 @@ import { sponsors } from "@/config/data";
 import "../styles/globals.css";
 
 export default function Home() {
-  const platinumSponsors = sponsors.filter(s => s.tier === 'Platinum');
-
   return (
     <main className="flex flex-col items-center justify-center">
       {/* HERO SECTION */}
@@ -106,7 +104,7 @@ export default function Home() {
       {/* CONTENT SECTION */}
       <section className="flex flex-col items-center gap-12 pb-16 pt-16 bg-background w-full px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         
-        {/* PLATINUM SPONSORS SECTION - NOW ON TOP */}
+        {/* CURRENT SPONSORS */}
         <div className="flex flex-col gap-8 w-full bg-default-50 dark:bg-default-100/30 p-8 sm:p-12 rounded-[2.5rem]">
           <div className="text-center">
             <h3 className="text-tiny font-bold uppercase tracking-[0.5em] text-[#EE3124] mb-2">Powered By</h3>
@@ -114,7 +112,7 @@ export default function Home() {
           </div>
           
           <div className="flex flex-wrap items-center justify-center gap-12 md:gap-16">
-            {platinumSponsors.map((sponsor, idx) => (
+            {sponsors.map((sponsor, idx) => (
               <a 
                 key={idx} 
                 href={sponsor.website} 

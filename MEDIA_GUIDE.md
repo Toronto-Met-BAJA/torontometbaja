@@ -41,7 +41,7 @@ Before adding a member, you must import their image at the **top of the file**:
 
 ## 🤝 Updating Sponsors
 
-Sponsors are grouped into **Platinum, Gold, Silver, and Bronze**.
+The `sponsors` array lists current partners on both the home and sponsorship pages. Only include confirmed current partners; the 2026/2027 package does not assign tiers to individual sponsors.
 
 ### 1. Adding a Sponsor
 Find the `sponsors` array and add a new entry:
@@ -49,7 +49,6 @@ Find the `sponsors` array and add a new entry:
 ```typescript
 {
   name: "Company Name",
-  tier: "Platinum", // Must be "Platinum", "Gold", "Silver", or "Bronze"
   logoUrl: companyLogoImg.src,
   website: "https://company-link.com",
 }
@@ -61,6 +60,11 @@ Find the `sponsors` array and add a new entry:
     ```typescript
     import companyLogoImg from "../resources/sponsors/company-logo.svg";
     ```
+
+### 3. Updating the Sponsorship Package
+1. Place the approved PDF in `public/` and update `sponsorshipPackage.url` and `sponsorshipPackage.season` in `config/data.ts`.
+2. Keep `sponsorshipTiers` prices and benefits aligned with the package's comparison table, and update `sponsorshipPerks` descriptions as needed.
+3. Update the season in `app/sponsors/layout.tsx` metadata. The navbar and sponsorship page both use the shared package link.
 
 ---
 

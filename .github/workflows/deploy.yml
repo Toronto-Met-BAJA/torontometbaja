@@ -7,14 +7,14 @@ on:
 
 jobs:
   build_and_deploy:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v6
         with:
-          node-version: 20
+          node-version: 22
           cache: npm
 
       - run: npm ci
@@ -26,9 +26,13 @@ jobs:
           NEXT_PUBLIC_GOOGLE_DRIVE_FOLDER_ID: ${{ secrets.NEXT_PUBLIC_GOOGLE_DRIVE_FOLDER_ID }}
           NEXT_PUBLIC_GA_MEASUREMENT_ID: ${{ secrets.NEXT_PUBLIC_GA_MEASUREMENT_ID }}
 
-      - uses: FirebaseExtended/action-hosting-deploy@v0
+      - name: Deploy to Firebase Hosting
+        uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_TORONTOMETBAJA }}
           channelId: live
           projectId: torontometbaja
+          # v15.34.1 adds an API-status check requiring serviceusage.services.get.
+          # Keep deployments compatible with the existing service account.
+          firebaseToolsVersion: "15.34.0"
